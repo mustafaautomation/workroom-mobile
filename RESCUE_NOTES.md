@@ -36,3 +36,25 @@ Not in this copy: files Cursor's template created and the agent never changed (e
 - binary not recoverable from diff view: docs/screenshots/review.png
 - binary not recoverable from diff view: docs/screenshots/welcome.png
 - lockfile incomplete, regenerate: package-lock.json
+
+## Repair pass (Claude, 2026-11-25)
+
+Recreated:
+- assets/ (every binary listed above under assets/): copied from expo-template-default@58.0.35, which is exactly where they came from (the agent never changed them). Stock Expo icons, not Workroom branding.
+- package-lock.json: regenerated with npm (the rescued one was incomplete).
+- docs/screenshots/*.png (all 7 listed above): re-captured from the rebuilt web export with scripts/capture-screenshots.mjs (real captures, not the originals).
+- .gitignore: added .env.* (keeping !.env.example).
+
+No source changes were needed.
+
+Checks run locally on 2026-11-25 (Node 22.23.4, the CI version; npm install was done with Node 25):
+- npm install: OK, package-lock.json regenerated (all from registry.npmjs.org)
+- npm run lint: pass
+- npm run typecheck (tsc --noEmit): pass
+- jest: 5 suites, 17 tests pass (matches the Cursor run)
+- npx expo export --platform web: pass (dist/)
+- Playwright web e2e (chromium, CI=true): 5 passed (matches the Cursor run)
+
+Note: under heavy machine load the first cold Jest run timed out on the first component test of a few suites (default 5s timeout while modules transform); a warm re-run passes. Not a code problem, but CI on a cold cache could be slow on that first test.
+
+Still missing / needs a person: real app icons; Maestro flows not run; Apple/Google/Expo accounts, Supabase URL + anon key + migration, DNS. No EAS build was run.
