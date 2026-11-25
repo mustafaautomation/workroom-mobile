@@ -1,0 +1,11 @@
+appId: com.quvantic.workroom
+---
+- launchApp
+- tapOn: "Try the demo"
+- tapOn: "Harbor & Co"
+- assertVisible: "Spring Lookbook"
+- assertNotVisible: "Lumen Health"
+- assertNotVisible: "Hold the retouch budget"
+- tapOn: "Cover still"
+- tapOn: "Approve"
+- assertVisible: "Approved"

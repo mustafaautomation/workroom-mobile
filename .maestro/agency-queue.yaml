@@ -1,0 +1,11 @@
+appId: com.quvantic.workroom
+---
+- launchApp
+- tapOn: "Try the demo"
+- tapOn: "Northline Studio"
+- assertVisible: "Approval queue"
+- assertVisible: "Harbor & Co"
+- assertVisible: "Lumen Health"
+- tapOn: "Lookbook PDF"
+- assertVisible: "Hold the retouch budget"
+- assertVisible: "Internal — clients never see this"

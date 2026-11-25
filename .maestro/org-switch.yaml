@@ -1,0 +1,11 @@
+appId: com.quvantic.workroom
+---
+- launchApp
+- tapOn: "Try the demo"
+- tapOn: "Fieldnote Press"
+- assertVisible: "Field guide reprint"
+- assertNotVisible: "Spring Lookbook"
+- tapOn: "More"
+- tapOn: "Switch to Northline Studio"
+- assertVisible: "Approval queue"
+- assertVisible: "Harbor & Co"

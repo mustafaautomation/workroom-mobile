@@ -1,0 +1,10 @@
+appId: com.quvantic.workroom
+---
+- launchApp
+- tapOn: "Try the demo"
+- tapOn: "Harbor & Co"
+- tapOn: "Homepage hero"
+- tapOn: "Note for the studio"
+- inputText: "Give the coat more room on the right."
+- tapOn: "Request changes"
+- assertVisible: "Changes requested"
