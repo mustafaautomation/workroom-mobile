@@ -58,3 +58,9 @@ Checks run locally on 2026-11-25 (Node 22.23.4, the CI version; npm install was 
 Note: under heavy machine load the first cold Jest run timed out on the first component test of a few suites (default 5s timeout while modules transform); a warm re-run passes. Not a code problem, but CI on a cold cache could be slow on that first test.
 
 Still missing / needs a person: real app icons; Maestro flows not run; Apple/Google/Expo accounts, Supabase URL + anon key + migration, DNS. No EAS build was run.
+
+## App icons (Claude, 2026-11-25)
+
+- Replaced the stock Expo placeholders (icon, splash-icon, favicon, Android adaptive background/foreground/monochrome in `assets/images/`) with real Workroom icons, rendered by the new `scripts/generate-icon.mjs` (plain Node, no dependencies, same approach as stamply-mobile) from the web app's `workroom/app/icon.svg` (cream window outline with green bar on #221F1B).
+- `app.json`: removed `ios.icon: ./assets/expo.icon` (the template's Icon Composer file with the Expo logo, which would have overridden icon.png on iOS) and deleted `assets/expo.icon/`. Adaptive-icon and splash background changed from #F3EEE6 to the logo colour #221F1B (splash imageWidth 76 -> 96). The other unused template images (expo-logo, react-logo, tabIcons, ...) are unreferenced and were left alone.
+- Checks: lint pass, typecheck pass, jest 5 suites / 17 tests pass, `expo config` resolves.
